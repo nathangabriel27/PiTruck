@@ -54,9 +54,6 @@ export default class Login extends Component<Props> {
                 value={this.state.senha}
               />
             </View>
-
-
-            
             <TouchableOpacity onPress={() => this.esqueciMinhaSenha()} style={styles.forgotButton} >
               <Text style={styles.forgotText}>Esqueceu sua senha ?</Text>
             </TouchableOpacity>
