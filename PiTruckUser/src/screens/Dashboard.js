@@ -73,7 +73,7 @@ export default class Dashboard extends Component<Props> {
   }
 
   abriProdutos() {
-    Actions.produtos();
+    Actions.listaProdutos();
   }
 
   cadastroProdutos() {

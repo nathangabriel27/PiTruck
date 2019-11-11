@@ -37,12 +37,8 @@ export default class ListaProdutos extends Component<Props> {
 
                 <Text style={styles.welcome}> Lista de produtos </Text>
 
-                <TouchableOpacity onPress={() => this.abrirDashboard()} style={styles.loginButton} >
-                    <Text style={styles.buttonText}>go to dashboard</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => this.abriProdutos()} style={styles.loginButton} >
-                    <Text style={styles.buttonText}>go to Produtos</Text>
+                <TouchableOpacity onPress={() => this.abrirListaDeProdutos()} style={styles.loginButton} >
+                    <Text style={styles.buttonText}>Adicionar Produto</Text>
                 </TouchableOpacity>
 
                 <FlatList
@@ -50,30 +46,22 @@ export default class ListaProdutos extends Component<Props> {
                  renderItem={({item})  => this.renderPlace(item)}
                 />
 
-
-
             </View>
         );
     }
 
     renderPlace(item){
         return (
-          <TouchableOpacity style={styles.rowView}>
+          <TouchableOpacity style={styles.rowView} onPress={()=>{ console.log(this); console.log('clicado');}}>
             <Text>{item.nome} - </Text>
-            <Text>{item.tipo}</Text>
+            <Text>{item.tipo}</Text>            
           </TouchableOpacity>
           
         )
       }
 
-    cadastroProdutos() {
+    abrirListaDeProdutos() {
         Actions.cadastroProdutos();
-    }
-    abrirDashboard() {
-        Actions.dashboard();
-    }
-    abriProdutos() {
-        Actions.produtos();
     }
 
     abrirRota() {
