@@ -22,7 +22,7 @@ export default class Dashboard extends Component<Props> {
 
         <Image style={styles.iconTruck} source={require('../../assets/icon.png')} />
 
-        <TouchableOpacity onPress={() => this.abriProdutos()} style={styles.loginButton} >
+        <TouchableOpacity onPress={() => this.listaProdutos()} style={styles.loginButton} >
           <Text style={styles.buttonText}>Meus Produtos</Text>
         </TouchableOpacity>
 
@@ -37,10 +37,10 @@ export default class Dashboard extends Component<Props> {
         <TouchableOpacity  style={styles.loginButton} >
           <Text style={styles.buttonText}>Configurações</Text>
         </TouchableOpacity>
-
+{/* 
         <TouchableOpacity  style={styles.loginButton} >
           <Text style={styles.buttonText}>EM BREVE</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <TouchableOpacity  style={styles.loginButton} >
           <Text style={styles.buttonText}>Ajuda e Suporte </Text>
@@ -72,9 +72,9 @@ export default class Dashboard extends Component<Props> {
     Actions.rota();
   }
 
-  abriProdutos() {
-    Actions.produtos();
-  }
+  listaProdutos() {    
+    Actions.listaProdutos();
+}
 
   cadastroProdutos() {
     Actions.cadastroProdutos();

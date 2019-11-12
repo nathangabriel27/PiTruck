@@ -6,48 +6,43 @@ import _ from "lodash"
 
 var { height, width } = Dimensions.get('window');
 type Props = {};
-export default class ListaProdutos extends Component<Props> {
+export default class detalheProdutos extends Component<Props> {
 
     constructor(props) {
         super(props);
         this.state = {
             deviceWidth: width,
             deviceHeight: height,
-            placesData: []
+            placeData: props.place
         };
     }
 
     componentDidMount() {
-        this.searchPlaces();
-    }
 
-    searchPlaces() {
-        firebase.database().ref("Users/Products")
-            .once("value")
-            .then((snapshot) => {
-                const placesMaped = _.values(snapshot.val());
-                this.setState({ placesData: placesMaped })
-            })
     }
 
     render() {
+        console.log("Local recebido do placeData: ")
+        console.log(this.state.placeData)
         return (
 
             <View style={styles.container}>
 
-                <Text style={styles.welcome}> Lista de produtos </Text>
+                <Text style={styles.welcome}> Detalhes do produtos </Text>
 
-                <TouchableOpacity onPress={() => this.abrirCadastroProdutos()} style={styles.loginButton} >
-                    <Text style={styles.buttonText}>cadastro de Produtos</Text>
-                </TouchableOpacity>
 
-                <FlatList
-                    data={this.state.placesData}
-                    renderItem={({ item }) => this.renderPlace(item)}
-                />
+
+                <Text >Nome : {this.state.placeData.nome}</Text>
+                <Text >Tipo : {this.state.placeData.tipo}</Text>
+                <Text >uid : {this.state.placeData.uid}</Text>
+
 
                 <TouchableOpacity onPress={() => this.abrirDashboard()} style={styles.loginButton} >
                     <Text style={styles.buttonText}>Voltar para dashboard</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => this.deletaProduto()} style={styles.deleteButton} >
+                    <Text style={styles.buttonText}>Deletar</Text>
                 </TouchableOpacity>
 
 
@@ -55,20 +50,23 @@ export default class ListaProdutos extends Component<Props> {
         );
     }
 
-    renderPlace(item) {
-        return (
-            <TouchableOpacity style={styles.rowView} onPress={() => this.detalheProduto(item)}  >
-                <Text>{item.nome} - </Text>
-                <Text>{item.tipo}</Text>
-            </TouchableOpacity>
 
-        )
-    }
-    detalheProduto(place) {
-        console.log("chamando detalhes",place);
+    deletaProduto() {
+        console.log("função de deletar");
 
-     Actions.detalheProduto({place:place});
+/*         var produtoRef = firebase.database().ref('Places/' + this.state.placeData.uid);
+        produtoRef.remove()
+            .then(function () {
+                console.log("Remove succeeded.")
+                Alert.alert("", "Local removido com sucesso!")
+                Actions.placeList();
+            })
+            .catch(function (error) {
+                console.log("Remove failed: " + error.message)
+            }); */
     }
+
+
 
     cadastroProdutos() {
         Actions.cadastroProdutos();
@@ -89,6 +87,9 @@ export default class ListaProdutos extends Component<Props> {
     }
     abrirCadastroProdutos() {
         Actions.cadastroProdutos();
+    }
+    detalhesProdutos() {
+        Actions.detalhesProdutos();
     }
 
 
@@ -144,6 +145,14 @@ const styles = StyleSheet.create({
         color: "#039BE5"
 
     },
+    deleteButton: {
+        backgroundColor: "#F00",
+        borderRadius: 10,
+        padding: 10,
+        margin: 20,
+        width: width * 0.5,
+        alignItems: 'center'
+    },
     loginButton: {
         backgroundColor: "#23541b",
         borderRadius: 10,
@@ -155,6 +164,10 @@ const styles = StyleSheet.create({
     rowView: {
         flex: 1,
         flexDirection: "row",
+    },
+    productName: {
+        color: "blue",
+        fontSize: 50
     },
 
 });
