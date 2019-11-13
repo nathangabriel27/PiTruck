@@ -70,14 +70,8 @@ export default class ListaProdutos extends Component<Props> {
      Actions.detalheProduto({place:place});
     }
 
-    cadastroProdutos() {
+    abrirListaDeProdutos() {
         Actions.cadastroProdutos();
-    }
-    abrirDashboard() {
-        Actions.dashboard();
-    }
-    abriProdutos() {
-        Actions.produtos();
     }
 
     abrirRota() {

@@ -80,7 +80,8 @@ export default class CadastroProdutos extends Component<Props> {
         const placeData = {
             nome: this.state.nome,
             tipo: this.state.tipo,
-            uidCreator: currentUser.uid
+            uidCreator: currentUser.uid,
+            uid : placeId
         }
         //firebase.database().ref(`Users/UsersPeople/${currentUser.uid}/Produtos`)
         firebase.database().ref(`Users/Products`)
