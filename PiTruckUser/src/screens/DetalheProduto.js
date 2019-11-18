@@ -52,19 +52,28 @@ export default class detalheProdutos extends Component<Props> {
 
 
     deletaProduto() {
-        console.log("função de deletar");
+        console.log("função de deletar",this.state.placeData.nome);
 
-/*         var produtoRef = firebase.database().ref('Places/' + this.state.placeData.uid);
-        produtoRef.remove()
-            .then(function () {
-                console.log("Remove succeeded.")
-                Alert.alert("", "Local removido com sucesso!")
-                Actions.placeList();
+        var produtoRef = firebase.database().ref('users/Products/'+this.state.placeData.nome);
+           produtoRef.remove()
+           .then(function () {
+               console.log("Remove succeeded.")
+               Alert.alert("Local removido com sucesso!")
+               Actions.dashboard();
             })
             .catch(function (error) {
                 console.log("Remove failed: " + error.message)
-            }); */
+            });
+
+
+
+
+
     }
+
+
+
+
 
 
 
