@@ -73,7 +73,7 @@ export default class Login extends Component<Props> {
             <Text style={styles.forgtText}>Não é membro ainda?</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => this.abrirPreCadastro()} style={styles.askButton} >
+          <TouchableOpacity onPress={() => this.abrirCadastro()} style={styles.askButton} >
             <Text style={styles.buttonText}>Cadastre - se </Text>
           </TouchableOpacity>
 
@@ -85,8 +85,8 @@ export default class Login extends Component<Props> {
   }// fim do render  
 
 
-  abrirPreCadastro() {
-    Actions.preCadastro();
+  abrirCadastro() {
+    Actions.cadastro();
   }
 
 
