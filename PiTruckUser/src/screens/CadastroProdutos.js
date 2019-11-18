@@ -116,7 +116,7 @@ export default class CadastroProdutos extends Component<Props> {
 
 
     voltaTela() {
-        Actions.pop()
+        Actions.listaProdutos()
     }
 
     abrirDashboard() {
