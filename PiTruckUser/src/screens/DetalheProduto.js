@@ -30,19 +30,19 @@ export default class detalheProdutos extends Component<Props> {
 
                 <Text style={styles.welcome}> Detalhes do produtos </Text>
 
-
-
                 <Text >Nome : {this.state.placeData.nome}</Text>
                 <Text >Tipo : {this.state.placeData.tipo}</Text>
-                <Text >uid : {this.state.placeData.uid}</Text>
 
-
-                <TouchableOpacity onPress={() => this.abrirDashboard()} style={styles.loginButton} >
-                    <Text style={styles.buttonText}>Voltar para dashboard</Text>
+                <TouchableOpacity onPress={() => this.editarProduto()} style={styles.editarButton} >
+                    <Text style={styles.buttonText}>Editar </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => this.deletaProduto()} style={styles.deleteButton} >
                     <Text style={styles.buttonText}>Deletar</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => this.abrirDashboard()} style={styles.loginButton} >
+                    <Text style={styles.buttonText}>Voltar para dashboard</Text>
                 </TouchableOpacity>
 
 
@@ -52,26 +52,24 @@ export default class detalheProdutos extends Component<Props> {
 
 
     deletaProduto() {
-        console.log("função de deletar",this.state.placeData.nome);
+        console.log("função de deletar", this.state.placeData.nome);
 
-        var produtoRef = firebase.database().ref('users/Products/'+this.state.placeData.nome);
-           produtoRef.remove()
-           .then(function () {
-               console.log("Remove succeeded.")
-               Alert.alert("Local removido com sucesso!")
-               Actions.dashboard();
+        var produtoRef = firebase.database().ref('users/Products/' + this.state.placeData.nome);
+        produtoRef.remove()
+            .then(function () {
+                console.log("Remove succeeded.")
+                Alert.alert("Local removido com sucesso!")
+                Actions.dashboard();
             })
             .catch(function (error) {
                 console.log("Remove failed: " + error.message)
             });
-
-
-
-
-
     }
 
+    editarProduto() {
+        console.log("Editando....");
 
+    }
 
 
 
@@ -153,6 +151,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: "#039BE5"
 
+    },
+    editarButton: {
+        backgroundColor: "#fab700",
+        borderRadius: 10,
+        padding: 10,
+        margin: 20,
+        width: width * 0.5,
+        alignItems: 'center'
     },
     deleteButton: {
         backgroundColor: "#F00",
