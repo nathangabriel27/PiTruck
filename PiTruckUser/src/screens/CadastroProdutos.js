@@ -93,8 +93,8 @@ export default class CadastroProdutos extends Component<Props> {
                         uid: placeId
                     })
                 Alert.alert("Sucesso", "produto cadastrado!");
-                console.log("currenteUser", currentUser);
-                console.log("snapshot.key",snapshot.key);
+                console.log("currenteUser.lastLoginAt:", currentUser.lastLoginAt);
+                console.log("snapshot:",snapshot);
                 
             })
     }
@@ -116,7 +116,7 @@ export default class CadastroProdutos extends Component<Props> {
 
 
     voltaTela() {
-        Actions.pop()
+        Actions.listaProdutos()
     }
 
     abrirDashboard() {
