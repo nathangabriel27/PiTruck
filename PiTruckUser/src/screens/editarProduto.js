@@ -5,15 +5,15 @@ import firebase from "firebase";
 
 var { height, width } = Dimensions.get('window');
 
-export default class CadastroProdutos extends Component<Props> {
+export default class EditarProdutos extends Component<Props> {
 
     constructor(props) {
         super(props);
         this.state = {
             deviceWidth: width,
             deviceHeight: height,
-            nome: "Vigas de aço",
-            tipo: " Carga pesada",
+            nome: "",
+            tipo: "",
             uidCreator: "",
 
         };
@@ -35,32 +35,32 @@ export default class CadastroProdutos extends Component<Props> {
                     <Text style={styles.buttonText}>Voltar</Text>
                 </TouchableOpacity>
 
-                <Text style={styles.titleText}>Editando .....</Text>
+                <Text style={styles.titleText}>Editar Produto </Text>
 
 
                 <TextInput
                     style={styles.inputStyle}
                     onChangeText={(text) => this.setState({ nome: text })}
-                    placeholder="Nome do produto"
+                    placeholder="Nome novo do produto"
                     value={this.state.nome}
                 />
                 <TextInput
                     style={styles.inputStyle}
                     onChangeText={(text) => this.setState({ tipo: text })}
-                    placeholder="Tipo de produto"
+                    placeholder="Tipo novo do produto"
                     value={this.state.tipo}
                 />
 
                 <TouchableOpacity onPress={() => this.cadastroProduto()} style={styles.registerButton} >
-                    <Text style={styles.buttonText}>Salvar Modificação</Text>
+                    <Text style={styles.buttonText}>Cadastrar</Text>
                 </TouchableOpacity>
             </View>
         );
     }
     cadastroProduto() {
         Alert.alert(
-            'Editar produto',
-            'Confirma editição  do produto?',
+            'Cadastrar produto',
+            'Confirma o seu cadastrar do produto?',
             [
                 { text: 'Cancelar e corrigir', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
                 {
@@ -73,7 +73,7 @@ export default class CadastroProdutos extends Component<Props> {
     }
 
     registraProduto() {
-       const { currentUser } = firebase.auth();
+        const { currentUser } = firebase.auth();
         if (currentUser) {
             console.log("Estou logado: ", currentUser.uid)
         }
@@ -90,14 +90,14 @@ export default class CadastroProdutos extends Component<Props> {
                 //firebase.database().ref(`Users/UsersPeople/${currentUser.uid}/Produtos`)
                 firebase.database().ref(`Users/Products`)
                     .update({
-                        uid: placeId 
+                        uid: placeId
                     })
-                    console.log("currenteUser.lastLoginAt:", currentUser.lastLoginAt);
-                    console.log("snapshot:",snapshot);
-                    
-                }) 
-                Alert.alert("Sucesso", "produto alterado !");
-            }
+                Alert.alert("Sucesso", "produto cadastrado!");
+                console.log("currenteUser.lastLoginAt:", currentUser.lastLoginAt);
+                console.log("snapshot:",snapshot);
+                
+            })
+    }
 
     askRegisterPlace() {
         Alert.alert(

@@ -154,7 +154,8 @@ const styles = StyleSheet.create({
     },
     rowView: {
         flex: 1,
-        flexDirection: "row",
+        flexDirection: "row",     
+
     },
 
 });

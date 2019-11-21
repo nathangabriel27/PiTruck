@@ -41,6 +41,7 @@ export default class detalheProdutos extends Component<Props> {
                     <Text style={styles.buttonText}>Deletar</Text>
                 </TouchableOpacity>
 
+
                 <TouchableOpacity onPress={() => this.abrirDashboard()} style={styles.loginButton} >
                     <Text style={styles.buttonText}>Voltar para dashboard</Text>
                 </TouchableOpacity>
@@ -58,7 +59,7 @@ export default class detalheProdutos extends Component<Props> {
         produtoRef.remove()
             .then(function () {
                 console.log("Remove succeeded.")
-                Alert.alert("Local removido com sucesso!")
+                Alert.alert("Deletado","O produto foi removido com sucesso!")
                 Actions.dashboard();
             })
             .catch(function (error) {
@@ -67,7 +68,7 @@ export default class detalheProdutos extends Component<Props> {
     }
 
     editarProduto() {
-        console.log("Editando....");
+      Actions.cadastroProdutos()
 
     }
 

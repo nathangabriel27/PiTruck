@@ -34,7 +34,7 @@ class RouterComponent extends Component {
 							<Scene key="preCadastro" component={PreCadastro} />
 							<Scene key="cadastro" component={Cadastro} />
 							<Scene key="cadastroCompania" component={CadastroCompania}  />
-							<Scene key="dashboard" component={Dashboard} initial/>
+							<Scene key="dashboard" component={Dashboard} initial />
 							<Scene key="rota" component={Rota} />
 							<Scene key="cadastroProdutos" component={CadastroProdutos} />
 							<Scene key="listaProdutos" component={ListaProdutos} />
